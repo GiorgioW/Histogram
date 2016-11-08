@@ -18,11 +18,9 @@ int main( int argc, char *argv[])  {
     //unsigned int size=ftell(fp);   
     
     rewind(fp);
-  //En fread: El 4 indica el numero de bytes que va a coger, el primer parametro donde guardarlo, el 1 el número de elementos
-  //esto te coge el valor de los 4 primeros bytes y te lo guarda en el int de altura, y luego los 4 siguientes:
     size_t return1 = fread(&altura,4,1,fp);
     size_t return2 = fread(&anchura,4,1,fp);
- /Matrix creation:
+  //Matrix creation:
    if (return1 > 0 && return2 > 0) {
    	 unsigned int matrixRed[width][height];
    	 unsigned int matrixGreen[width][height];
@@ -87,7 +85,7 @@ int main( int argc, char *argv[])  {
 
         //cout << "Limits array is: " << "\n";  
        	for (unsigned int i = 0; i < sections; ++i) {
-       		limites[i] = value*i; //Limits are created 
+       		limits[i] = value*i; //Limits are created 
        		//cout << limits[i] << " ";
        	}
 
@@ -106,13 +104,13 @@ int main( int argc, char *argv[])  {
 						break;
 					}
 					else {
-						k++; // Si no esta simplemente se pasa al siguiente rango
+						k++; //If there isn't, next range
 					}
 				}
            	}
         }
 
-		ofstream myFile (argv[6]); //Creacion del archivo de salida con el parametro que se ha introducido
+		ofstream myFile (argv[6]); //Offset file creation with the parameter introduced
 		
 		if (myFile.is_open()) { //If the offset file has been created right.
 			//cout << "The histogram has been generated in the file " << argv[6] << "\n";
